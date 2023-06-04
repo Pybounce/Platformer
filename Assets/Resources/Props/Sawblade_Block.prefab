@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7638462891461227840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7638462891461227841}
+  m_Layer: 0
+  m_Name: Sawblade_Block
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7638462891461227841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638462891461227840}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 203070566159549532}
+  - {fileID: 9049362959739581636}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7638462892662792727
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7638462891461227841}
+    m_Modifications:
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2080485464690756713, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+--- !u!4 &9049362959739581636 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1699139284456560339, guid: 0c1679497c43af840978fde67495fbb8, type: 3}
+  m_PrefabInstance: {fileID: 7638462892662792727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7638462893134776026
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7638462891461227841}
+    m_Modifications:
+    - target: {fileID: 7177584082614376508, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_Name
+      value: Sawblade
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+--- !u!4 &203070566159549532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7552596074608329350, guid: 7cccba9bb44815a488e21e2d62a82e2e, type: 3}
+  m_PrefabInstance: {fileID: 7638462893134776026}
+  m_PrefabAsset: {fileID: 0}
