@@ -39,7 +39,7 @@ public class StageManager : MonoBehaviour
     {
         LoadNewStage(_currentStageIndex);
         ResetPlayer();
-        _stageBuilder.Build(_currentStageData.PropData);
+        _stageBuilder.Build(_currentStageData);
     }
     public void RestartStage()
     {

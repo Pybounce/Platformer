@@ -5,14 +5,19 @@ using UnityEngine;
 public struct StageData
 {
     public readonly int Id;
-    public PropData[,] PropData;
+    public PropData[] PropData;
+    public int PropDataWidth;
     public Vector3 PlayerStartPosition;
-    public StageData(int id, PropData[,] tiles, Vector3 playerStartPosition)
+    public StageData(int id, PropData[] tiles, int propDataWidth, Vector3 playerStartPosition)
     {
         Id = id;
         PropData = tiles;
+        PropDataWidth = propDataWidth;
         PlayerStartPosition = playerStartPosition;
     }
+
+}
+    /*
     public StageData(StageJsonData jsonData, int id)
     {
         int width = jsonData.PropDataWidth;
@@ -45,4 +50,4 @@ public struct StageJsonData
         PlayerStartPosition = playerStartPosition;
         PropDataWidth = propDataWidth;
     }
-}
+}*/

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 public class StageBuilder : MonoBehaviour
@@ -17,22 +18,23 @@ public class StageBuilder : MonoBehaviour
         _stageObjectContainer = new GameObject("Stage Object Container").transform;
     }
 
-    public void Build(PropData[,] propData)
+    public void Build(StageData stageData)
     {
         Demolish();
-        int sizeX = propData.GetLength(1);
-        int sizeY = propData.GetLength(0);   
-        for (int y = 0; y < sizeY; y++)
+
+        Vector2Int dataDimentions = ArrayExtensions.Get2DDimentions(stageData.PropData, stageData.PropDataWidth);
+        for (int y = 0; y < dataDimentions.y; y++)
         {
-            for (int x = 0; x < sizeX; x++)
+            for (int x = 0; x < dataDimentions.x; x++)
             {
-                PropData currentPropData = propData[y, x];
+                int flatIndex = ArrayExtensions.FlattenIndex(x, y, stageData.PropDataWidth);
+                PropData currentPropData = stageData.PropData[flatIndex];
                 if (currentPropData.Id == 0) continue;
-                Vector3 itemPosition = GridHelpers.GridToWorldPos(x, y, sizeX , sizeY);
+                Vector3 itemPosition = GridHelpers.GridToWorldPos(x, y, dataDimentions.x, dataDimentions.y);
                 SpawnProp(currentPropData, itemPosition);
             }
         }
-        SpawnBackWall(sizeX, sizeY);
+        SpawnBackWall(dataDimentions.x, dataDimentions.y);
     }
 
 

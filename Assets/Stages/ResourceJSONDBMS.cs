@@ -32,8 +32,7 @@ public class ResourceJSONDBMS : IReadIDBMS
         {
             string stagePath = "Stages/Stage_" + stageId;
             TextAsset jsonText = Resources.Load<TextAsset>(stagePath);
-            StageJsonData stageJsonData = JsonUtility.FromJson<StageJsonData>(jsonText.text);
-            return new StageData(stageJsonData, stageId);
+            return JsonUtility.FromJson<StageData>(jsonText.text);
         }
         catch(Exception ex)
         {
@@ -74,5 +73,5 @@ public class ResourceJSONDBMS : IReadIDBMS
         return JsonUtility.FromJson<T>(jsonText.text);
     }
 
-    public static StageData DefaultStage = new StageData(-1, new PropData[0, 0], Vector3.zero);
+    public static StageData DefaultStage = new StageData(-1, new PropData[1], 1, Vector3.zero);
 }
