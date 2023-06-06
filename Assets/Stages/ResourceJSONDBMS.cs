@@ -5,8 +5,27 @@ using System.IO;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public static class StageDeserialiser
+public class ResourceJSONDBMS : IReadIDBMS
 {
+    #region Singleton
+    private static ResourceJSONDBMS _instance;
+    public static ResourceJSONDBMS Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new ResourceJSONDBMS();
+            }
+            return _instance;
+        }
+        private set
+        {
+            _instance = value;
+        }
+    }
+    #endregion
+
     public static StageData LoadStage(int stageId)
     {
         try
@@ -47,6 +66,12 @@ public static class StageDeserialiser
         {
             return DefaultStage;
         }
+    }
+
+    public T Load<T>(string directory)
+    {
+        TextAsset jsonText = Resources.Load<TextAsset>(directory);
+        return JsonUtility.FromJson<T>(jsonText.text);
     }
 
     public static StageData DefaultStage = new StageData(-1, new PropData[0, 0], Vector3.zero);

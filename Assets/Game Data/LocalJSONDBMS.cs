@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DataManager : IDataManager
+public class LocalJSONDBMS : IDBMS
 {
-    private static DataManager _instance;
-    public static DataManager Instance
+    #region Singleton
+    private static LocalJSONDBMS _instance;
+    public static LocalJSONDBMS Instance
     {
         get
         {
             if (_instance == null)
             {
-                _instance = new DataManager();
+                _instance = new LocalJSONDBMS();
             }
             return _instance;
         }
@@ -21,6 +22,8 @@ public class DataManager : IDataManager
             _instance = value;
         }
     }
+    #endregion
+
     public T Load<T>(string directory)
     {
         string fullPath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, directory));

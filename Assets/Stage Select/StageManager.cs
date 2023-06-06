@@ -55,7 +55,7 @@ public class StageManager : MonoBehaviour
     }
     private void LoadNewStage(int stageId)
     {
-        _currentStageData = StageDeserialiser.LoadStage(stageId);
+        _currentStageData = ResourceJSONDBMS.LoadStage(stageId);
         if (_currentStageData.Id == -1) { FindObjectOfType<GameManager>().LoadStageSelectScene(); }
     }
 }

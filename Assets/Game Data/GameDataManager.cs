@@ -29,7 +29,7 @@ public class GameDataManager
         {
             return _gameData;
         }
-        GameData gameData = DataManager.Instance.Load<GameData>(_directory);
+        GameData gameData = LocalJSONDBMS.Instance.Load<GameData>(_directory);
         if (gameData == null)
         {
             gameData = NewGame();
@@ -39,13 +39,13 @@ public class GameDataManager
     }
     public void SaveGame(GameData data)
     {
-        DataManager.Instance.Save(data, _directory);
+        LocalJSONDBMS.Instance.Save(data, _directory);
         _gameData = data;
     }
     public GameData NewGame()
     {
         List<PlayerStageData> playerStagesData = new List<PlayerStageData>();
-        for (int i = 0; i < StageDeserialiser.GetStageCount(); i++)
+        for (int i = 0; i < ResourceJSONDBMS.GetStageCount(); i++)
         {
             PlayerStageData stageData = new PlayerStageData(i);
             playerStagesData.Add(stageData);
