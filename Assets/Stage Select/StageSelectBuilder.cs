@@ -21,7 +21,7 @@ public class StageSelectBuilder : MonoBehaviour
     {
         _buttonWidth = StageSelectButton.GetComponent<RectTransform>().rect.width;
         _buttonHeight = StageSelectButton.GetComponent<RectTransform>().rect.height;
-        GameData gameData = GameDataManager.Instance.LoadGame();
+        GameData gameData = GameDb.LoadGame();
         for (int i = 0; i < gameData.StagesData.Count; i++)
         {
             PlayerStageData playerStageData = gameData.StagesData[i];

@@ -5,24 +5,6 @@ using UnityEngine;
 
 public class LocalJSONDBMS : IDBMS
 {
-    #region Singleton
-    private static LocalJSONDBMS _instance;
-    public static LocalJSONDBMS Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new LocalJSONDBMS();
-            }
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
-    #endregion
 
     public T Load<T>(string directory)
     {
