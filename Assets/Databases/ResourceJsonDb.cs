@@ -5,7 +5,7 @@ using System.IO;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public class ResourceJSONDBMS : IReadIDBMS
+public class ResourceJsonDb : IReadDb
 {
 
     public T Load<T>(string directory)

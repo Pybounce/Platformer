@@ -6,8 +6,8 @@ using UnityEngine.Playables;
 
 public abstract class GameDb
 {
-    private static LocalJSONDBMS _localJSONDBSM = new LocalJSONDBMS();
-    private static ResourceJSONDBMS _resourceJSONDBSM = new ResourceJSONDBMS();
+    private static LocalJsonDb _localJSONDBSM = new LocalJsonDb();
+    private static ResourceJsonDb _resourceJSONDBSM = new ResourceJsonDb();
 
 
     public static StageData LoadStage(int stageId)
