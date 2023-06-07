@@ -3,24 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class DataManager : IDataManager
+public class LocalJsonDb : IDatabase
 {
-    private static DataManager _instance;
-    public static DataManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new DataManager();
-            }
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
+
     public T Load<T>(string directory)
     {
         string fullPath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, directory));

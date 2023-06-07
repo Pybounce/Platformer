@@ -20,13 +20,13 @@ public class StageManager : MonoBehaviour
     }
     public void CompleteStage()
     {
-        GameData gameData = GameDataManager.Instance.LoadGame();
+        GameData gameData = GameDb.LoadGame();
         int levelIndex = gameData.StagesData.FindIndex(x => x.StageId == _currentStageIndex);
         PlayerStageData playerStageData = gameData.StagesData[levelIndex];
         playerStageData.StageComplete = true;
         gameData.StagesData.RemoveAt(levelIndex);
         gameData.StagesData.Insert(levelIndex, playerStageData);
-        GameDataManager.Instance.SaveGame(gameData);
+        GameDb.SaveGame(gameData);
 
         StartNextStage();
     }
@@ -39,7 +39,7 @@ public class StageManager : MonoBehaviour
     {
         LoadNewStage(_currentStageIndex);
         ResetPlayer();
-        _stageBuilder.Build(_currentStageData.PropData);
+        _stageBuilder.Build(_currentStageData);
     }
     public void RestartStage()
     {
@@ -55,7 +55,7 @@ public class StageManager : MonoBehaviour
     }
     private void LoadNewStage(int stageId)
     {
-        _currentStageData = StageDeserialiser.LoadStage(stageId);
+        _currentStageData = GameDb.LoadStage(stageId);
         if (_currentStageData.Id == -1) { FindObjectOfType<GameManager>().LoadStageSelectScene(); }
     }
 }
