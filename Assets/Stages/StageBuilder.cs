@@ -40,14 +40,14 @@ public class StageBuilder : MonoBehaviour
 
     private void SpawnProp(PropData propData, Vector3 position)
     {
-        string propPath = "Props/" + PropMapper.IdToName(propData.Id);
-        GameObject propPrefab = Resources.Load<GameObject>(propPath);
+        string propName = PropMapper.IdToName(propData.Id);
+        GameObject propPrefab = GameDb.LoadProp(propName);
         GameObject prop = Instantiate(propPrefab, position, Quaternion.Euler(new Vector3(0f, 0f, -(float)propData.Rotation)));
         prop.transform.parent = _stageObjectContainer;
     }
     private void SpawnBackWall(int sizeX, int sizeY)
     {
-        GameObject propPrefab = Resources.Load<GameObject>("Props/BackWall");
+        GameObject propPrefab = GameDb.LoadProp("BackWall");
         GameObject prop = Instantiate(propPrefab, new Vector3((sizeX / 2f) - 0.5f, (sizeY / 2f) + 0.5f, 1f), Quaternion.identity);
         prop.transform.localScale = new Vector3(sizeX, sizeY, 1f);
         prop.transform.parent = _stageObjectContainer;

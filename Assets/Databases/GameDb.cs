@@ -24,6 +24,11 @@ public abstract class GameDb
         }
 
     }
+    public static GameObject LoadProp(string propName)
+    {
+        string propPath = "Props/" + propName;
+        return _resourceDb.Load<GameObject>(propPath);
+    }
     public static int GetStageCount()
     {
         try
