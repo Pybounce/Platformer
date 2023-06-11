@@ -6,7 +6,7 @@ using UnityEngine;
 public class LocalJsonDb : IDatabase
 {
 
-    public T Load<T>(string directory)
+    public T LoadFromJson<T>(string directory)
     {
         string fullPath = Path.GetFullPath(Path.Combine(Application.persistentDataPath, directory));
         CreateDirectory(fullPath);

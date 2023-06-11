@@ -7,7 +7,7 @@ using UnityEngine.Playables;
 public abstract class GameDb
 {
     private static LocalJsonDb _localJsonDb = new LocalJsonDb();
-    private static ResourceJsonDb _resourceJsonDb = new ResourceJsonDb();
+    private static ResourceDb _resourceDb = new ResourceDb();
 
 
     public static StageData LoadStage(int stageId)
@@ -15,10 +15,11 @@ public abstract class GameDb
         try
         {
             string stagePath = "Stages/Stage_" + stageId;
-            return _resourceJsonDb.Load<StageData>(stagePath);
+            return _resourceDb.LoadFromJson<StageData>(stagePath);
         }
         catch (Exception ex)
         {
+            return StageData.DefaultStage;
             throw ex;
         }
 
@@ -41,7 +42,7 @@ public abstract class GameDb
     {
         string directory = "GameData";
 
-        GameData gameData = _localJsonDb.Load<GameData>(directory);
+        GameData gameData = _localJsonDb.LoadFromJson<GameData>(directory);
         if (gameData == null)
         {
             gameData = NewGame();

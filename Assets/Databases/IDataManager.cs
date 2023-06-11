@@ -7,7 +7,7 @@ public interface IDatabase : IReadDb, IWriteDb {}
 
 public interface IReadDb
 {
-    public T Load<T>(string directory);
+    public T LoadFromJson<T>(string directory);
 }
 public interface IWriteDb
 {
