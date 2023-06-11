@@ -4,6 +4,7 @@ using UnityEngine;
 
 public struct StageData
 {
+    public static StageData DefaultStage => new StageData(-1, null, 0, Vector3.zero);
     public readonly int Id;
     public PropData[] PropData;
     public int PropDataWidth;

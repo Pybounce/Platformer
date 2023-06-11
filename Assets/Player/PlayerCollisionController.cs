@@ -7,11 +7,6 @@ public class PlayerCollisionController : MonoBehaviour
 {
     [SerializeField] private LayerMask ObstacleLayerMask;
     [SerializeField] private LayerMask CompletionGemLayerMask;
-    private StageManager _stageManager;
-    private void Start()
-    {
-        _stageManager = FindObjectOfType<StageManager>();
-    }
 
     private async void OnTriggerEnter(Collider collision)
     {
@@ -19,11 +14,11 @@ public class PlayerCollisionController : MonoBehaviour
         {
             GetComponent<PlayerController>().Kill();
             await Wait();
-            _stageManager.RestartStage();
+            StageManager.Instance.RestartStage();
         }
         else if (1 << collision.gameObject.layer == CompletionGemLayerMask)
         {
-            _stageManager.CompleteStage();
+            StageManager.Instance.CompleteStage();
         }
     }
 
