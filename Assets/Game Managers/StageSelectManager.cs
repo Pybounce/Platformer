@@ -8,20 +8,16 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class StageSelectManager : MonoBehaviour
 {
-    public static StageSelectManager instance;
-
-    public int SelectedStage { get; private set; }
+    public static StageSelectManager Instance;
 
     private void Start()
     {
-        if (instance == null) { instance = this; }
+        if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
-        DontDestroyOnLoad(gameObject);
     }
 
     public void LoadStage(int stageIndex)
     {
-        SelectedStage = stageIndex;
-        FindObjectOfType<GameManager>().LoadStageScene();
+        GameManager.Instance.LoadStageScene(stageIndex);
     }
 }

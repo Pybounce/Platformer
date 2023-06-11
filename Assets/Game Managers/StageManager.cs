@@ -11,9 +11,18 @@ public class StageManager : MonoBehaviour
 
     private StageData _currentStageData;
 
+    public static StageManager Instance;
+
     private void Start()
     {
-        _currentStageIndex = FindObjectOfType<StageSelectManager>()?.SelectedStage ?? 0;
+        if (Instance == null) { Instance = this; }
+        else { Destroy(gameObject); }
+    }
+
+
+    public void Initialise(int stageIndex)
+    {
+        _currentStageIndex = stageIndex;
         _stageBuilder = gameObject.AddComponent<StageBuilder>();
         _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         StartStage();

@@ -6,11 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     
-    public static GameManager instance;
+    public static GameManager Instance;
+
+    private StageSceneData _stageSceneData;
 
     private void Start()
     {
-        if (instance == null) { instance = this; }
+        if (Instance == null) { Instance = this; }
         else { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
     }
@@ -21,13 +23,35 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public void LoadStageScene()
+    public void LoadStageScene(int stageIndex)
     {
+        _stageSceneData.StageIndex = stageIndex;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene("SampleScene");
-        Cursor.visible = false;
+        
     }
+    private void InitialiseStageScene()
+    {
+        Cursor.visible = false;
+        CreateStageManager(_stageSceneData.StageIndex);
+    }
+    private void CreateStageManager(int stageIndex)
+    {
+        GameObject stageManagerObj = new GameObject();
+        stageManagerObj.AddComponent<StageManager>().Initialise(stageIndex);
+    }
+
+
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        switch (scene.name)
+        {
+            case SceneNames.StageScene:
+                InitialiseStageScene();
+                break;
+
+        }
+    }
+
 }
-
-
-
-//make me a singleton
