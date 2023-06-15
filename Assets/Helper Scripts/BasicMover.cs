@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class BasicMover : MonoBehaviour
 {
-    [SerializeField] private Vector3 PointA;
-    [SerializeField] private Vector3 PointB;
+    [SerializeField] private Vector3 Offset;
     [SerializeField] private float Speed = 1f;
     [SerializeField] private float StartLerp = 0f;
 
-    private bool movingForward = true;
-    private Vector3 nextPoint;
+    private Vector3 _nextPoint;
+    private Vector3 _currentPoint;
 
-    public void Initialise(Vector3 pointA, Vector3 pointB, float speed = 1f, float startLerp = 0f)
+    public void Initialise(Vector3 offset, float speed = 1f, float startLerp = 0f)
     {
-        PointA = pointA;
-        PointB = pointB;
+        Offset = offset;
         Speed = speed;
         StartLerp = startLerp;
         BeginMove();
@@ -27,21 +25,24 @@ public class BasicMover : MonoBehaviour
     }
     void Update()
     {
-        Vector3 direction = nextPoint - transform.position;
+        Vector3 direction = _nextPoint - transform.position;
 
         transform.position += direction.normalized * Time.deltaTime * Speed;
 
-        if (Vector3.Distance(transform.position, nextPoint) < 0.1f)
+        if (Vector3.Distance(transform.position, _nextPoint) < 0.1f)
         {
-            nextPoint = movingForward ? PointA : PointB;
-            movingForward = !movingForward;
+            Vector3 tempCurrentPoint = _currentPoint;
+            _currentPoint = _nextPoint;
+            _nextPoint = tempCurrentPoint;
         }
     }
 
     private void BeginMove()
     {
-        Vector3 diff = PointB - PointA;
-        transform.position = PointA + (diff * StartLerp);
-        nextPoint = PointB;
+        _currentPoint = transform.position;
+        _nextPoint = _currentPoint + Offset;
+
+        Vector3 diff = _nextPoint - _currentPoint;
+        transform.position = _currentPoint + (diff * StartLerp);
     }
 }
