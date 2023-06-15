@@ -6,7 +6,7 @@ using UnityEngine;
 public struct PropData
 {
     public int Id;
-    public PropDirection Rotation;
+    public PropDirection Rotation;  //Change to direction
 }
 [System.Serializable]
 public enum PropDirection

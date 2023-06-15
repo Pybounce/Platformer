@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LerpMovement : MonoBehaviour
+public class BasicMover : MonoBehaviour
 {
-
     [SerializeField] private Vector3 PointA;
     [SerializeField] private Vector3 PointB;
     [SerializeField] private float Speed = 1f;
+    [SerializeField] private float StartLerp = 0f;
 
     private bool movingForward = true;
     private Vector3 nextPoint;
 
+    public void Initialise(Vector3 pointA, Vector3 pointB, float speed = 1f, float startLerp = 0f)
+    {
+        PointA = pointA;
+        PointB = pointB;
+        Speed = speed;
+        StartLerp = startLerp;
+        BeginMove();
+    }
+
     private void Start()
     {
-        transform.position = PointA;
-        nextPoint = PointB;
+        BeginMove();
     }
     void Update()
     {
@@ -28,5 +36,12 @@ public class LerpMovement : MonoBehaviour
             nextPoint = movingForward ? PointA : PointB;
             movingForward = !movingForward;
         }
+    }
+
+    private void BeginMove()
+    {
+        Vector3 diff = PointB - PointA;
+        transform.position = PointA + (diff * StartLerp);
+        nextPoint = PointB;
     }
 }
