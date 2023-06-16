@@ -10,5 +10,11 @@ public static class GridHelpers
         float yPos = (sizeY - yIndex) * cellSize;
         return new Vector3(xPos, yPos, 0f) + gridPosition;
     }
+    public static Vector3 GridToWorldPos(Vector2Int index, Vector2Int size, Vector3 gridPosition = default, int cellSize = 1)
+    {
+        float xPos = index.x * cellSize;
+        float yPos = (size.y - index.y) * cellSize;
+        return new Vector3(xPos, yPos, 0f) + gridPosition;
+    }
 }
 //TODO => Make an actual Grid data structure and this can be GridExtensions

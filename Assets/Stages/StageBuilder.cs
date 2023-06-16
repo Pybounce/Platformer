@@ -15,26 +15,26 @@ public class StageBuilder : MonoBehaviour
     public void Demolish()
     {
         Destroy(_stageObjectContainer.gameObject);
-        _stageObjectContainer = new GameObject("Stage Object Container").transform;
+        _stageObjectContainer = new GameObject("Stage Object Container").transform; //TODO -> Move this to it's own method, it's called in awake too
     }
 
     public void Build(StageData stageData)
     {
         Demolish();
 
-        Vector2Int dataDimentions = ArrayExtensions.Get2DDimentions(stageData.PropData, stageData.PropDataWidth);
-        for (int y = 0; y < dataDimentions.y; y++)
+        for (int y = 0; y < stageData.Size.y; y++)
         {
-            for (int x = 0; x < dataDimentions.x; x++)
+            for (int x = 0; x < stageData.Size.x; x++)
             {
-                int flatIndex = ArrayExtensions.FlattenIndex(x, y, stageData.PropDataWidth);
+                int flatIndex = ArrayExtensions.FlattenIndex(x, y, stageData.Size.x);
                 PropData currentPropData = stageData.PropData[flatIndex];
                 if (currentPropData.Id == 0) continue;
-                Vector3 itemPosition = GridHelpers.GridToWorldPos(x, y, dataDimentions.x, dataDimentions.y);
+                Vector3 itemPosition = GridHelpers.GridToWorldPos(x, y, stageData.Size.x, stageData.Size.y);
                 SpawnProp(currentPropData, itemPosition);
             }
         }
-        SpawnBackWall(dataDimentions.x, dataDimentions.y);
+
+        SpawnBackWall(stageData.Size.x, stageData.Size.y);
     }
 
 
@@ -42,7 +42,7 @@ public class StageBuilder : MonoBehaviour
     {
         string propName = PropMapper.IdToName(propData.Id);
         GameObject propPrefab = GameDb.LoadProp(propName);
-        GameObject prop = Instantiate(propPrefab, position, Quaternion.Euler(new Vector3(0f, 0f, -(float)propData.Rotation)));
+        GameObject prop = Instantiate(propPrefab, position, Quaternion.Euler(new Vector3(0f, 0f, -(float)propData.Direction)));
         prop.transform.parent = _stageObjectContainer;
     }
     private void SpawnBackWall(int sizeX, int sizeY)

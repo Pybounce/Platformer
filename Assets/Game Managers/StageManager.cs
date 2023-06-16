@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,12 +61,20 @@ public class StageManager : MonoBehaviour
     }
     private void ResetPlayer()
     {
-        _playerController.ResetTo(_currentStageData.PlayerStartPosition);
+        _playerController.ResetTo(GridHelpers.GridToWorldPos(_currentStageData.PlayerStartIndex, _currentStageData.Size));
     }
     private void LoadNewStage(int stageId)
     {
-        _currentStageData = GameDb.LoadStage(stageId);
-        if (_currentStageData.Id == -1) { FindObjectOfType<GameManager>().LoadStageSelectScene(); }
+        try
+        {
+            _currentStageData = GameDb.LoadStage(stageId);
+            if (_currentStageData.Id == -1) { FindObjectOfType<GameManager>().LoadStageSelectScene(); }
+        }
+        catch(Exception e)
+        {
+            FindObjectOfType<GameManager>().LoadStageSelectScene();
+        }
+
     }
 }
 
