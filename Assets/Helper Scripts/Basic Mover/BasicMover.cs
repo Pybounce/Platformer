@@ -12,18 +12,28 @@ public class BasicMover : MonoBehaviour
     private float _startLerp;
     private Vector3 _nextPoint;
     private Vector3 _currentPoint;
+    /// <summary>
+    /// Stops Start from overriding init input.
+    ///<br>If you initialise the object right after instantiating through code, start will be called on the next frame. So this stops it from overriding the input.</br>
+    /// </summary>
+    private bool _manuallyInitialised;
 
-    public void Initialise(BasicMoverInput input)
+    public void Initialise(BasicMoverInput input, bool manualInitialisation = true)
     {
         _offset = input.Offset;
         _speed = input.Speed;
         _startLerp = input.StartLerp;
+        _manuallyInitialised = manualInitialisation || _manuallyInitialised;
         BeginMove();
+
     }
 
     private void Start()
     {
-        Initialise(Input);
+        if (_manuallyInitialised == false)
+        {
+            Initialise(Input, false);
+        }
     }
     void Update()
     {
