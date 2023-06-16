@@ -7,7 +7,7 @@ using UnityEngine;
 /// Data used in the BasicMover script
 /// </summary>
 [System.Serializable]
-public struct PropMoverData
+public struct BasicMoverInput
 {
     public bool Enabled;
     public Vector3 Offset;

@@ -8,6 +8,6 @@ public struct PropData
     public int Id;
     public Vector2Int GridIndex;
     public PropDirection Direction;
-    public PropMoverData MoverData;
-    public PropRotatorData RotatorData;
+    public BasicMoverInput MoverInput;
+    public BasicRotatorInput RotatorInput;
 }

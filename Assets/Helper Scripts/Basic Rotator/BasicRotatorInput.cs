@@ -6,7 +6,7 @@ using UnityEngine;
 /// Data used in the BasicRotator script
 /// </summary>
 [System.Serializable]
-public struct PropRotatorData
+public struct BasicRotatorInput
 {
     public bool Enabled;
     public Vector3 Rotation;

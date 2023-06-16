@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class BasicMover : MonoBehaviour
 {
-    [SerializeField] private Vector3 Offset;
-    [SerializeField] private float Speed = 1f;
-    [SerializeField] private float StartLerp = 0f;
+    [SerializeField] private BasicMoverInput Input;
 
+
+    private Vector3 _offset;
+    private float _speed;
+    private float _startLerp;
     private Vector3 _nextPoint;
     private Vector3 _currentPoint;
 
-    public void Initialise(Vector3 offset, float speed = 1f, float startLerp = 0f)
+    public void Initialise(BasicMoverInput input)
     {
-        Offset = offset;
-        Speed = speed;
-        StartLerp = startLerp;
+        _offset = input.Offset;
+        _speed = input.Speed;
+        _startLerp = input.StartLerp;
         BeginMove();
     }
 
     private void Start()
     {
-        BeginMove();
+        Initialise(Input);
     }
     void Update()
     {
         Vector3 direction = _nextPoint - transform.position;
 
-        transform.position += direction.normalized * Time.deltaTime * Speed;
+        transform.position += direction.normalized * Time.deltaTime * _speed;
 
         if (Vector3.Distance(transform.position, _nextPoint) < 0.1f)
         {
@@ -40,9 +42,9 @@ public class BasicMover : MonoBehaviour
     private void BeginMove()
     {
         _currentPoint = transform.position;
-        _nextPoint = _currentPoint + Offset;
+        _nextPoint = _currentPoint + _offset;
 
         Vector3 diff = _nextPoint - _currentPoint;
-        transform.position = _currentPoint + (diff * StartLerp);
+        transform.position = _currentPoint + (diff * _startLerp);
     }
 }
