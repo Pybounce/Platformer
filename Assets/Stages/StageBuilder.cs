@@ -8,42 +8,46 @@ public class StageBuilder : MonoBehaviour
 {
     private Transform _stageObjectContainer;
 
-    private void Awake()
-    {
-        _stageObjectContainer = new GameObject("Stage Object Container").transform;
-    }
-    public void Demolish()
-    {
-        Destroy(_stageObjectContainer.gameObject);
-        _stageObjectContainer = new GameObject("Stage Object Container").transform;
-    }
-
     public void Build(StageData stageData)
     {
-        Demolish();
-
-        Vector2Int dataDimentions = ArrayExtensions.Get2DDimentions(stageData.PropData, stageData.PropDataWidth);
-        for (int y = 0; y < dataDimentions.y; y++)
-        {
-            for (int x = 0; x < dataDimentions.x; x++)
-            {
-                int flatIndex = ArrayExtensions.FlattenIndex(x, y, stageData.PropDataWidth);
-                PropData currentPropData = stageData.PropData[flatIndex];
-                if (currentPropData.Id == 0) continue;
-                Vector3 itemPosition = GridHelpers.GridToWorldPos(x, y, dataDimentions.x, dataDimentions.y);
-                SpawnProp(currentPropData, itemPosition);
-            }
-        }
-        SpawnBackWall(dataDimentions.x, dataDimentions.y);
+        CreateNewStageObjectContainer();
+        SpawnProps(stageData);
+        SpawnBackWall(stageData.Size.x, stageData.Size.y);
     }
-
+    private void CreateNewStageObjectContainer()
+    {
+        if (_stageObjectContainer != null)
+        {
+            Destroy(_stageObjectContainer.gameObject);
+        }
+        _stageObjectContainer = new GameObject("Stage Object Container").transform;
+    }
+    private void SpawnProps(StageData stageData)
+    {
+        if (stageData.PropData == null) { return; }
+        foreach (PropData currentPropData in stageData.PropData)
+        {
+            if (currentPropData.Id == 0) continue;
+            Vector3 itemPosition = GridHelpers.GridToWorldPos(currentPropData.GridIndex, stageData.Size);
+            SpawnProp(currentPropData, itemPosition);
+        }
+    }
 
     private void SpawnProp(PropData propData, Vector3 position)
     {
         string propName = PropMapper.IdToName(propData.Id);
         GameObject propPrefab = GameDb.LoadProp(propName);
-        GameObject prop = Instantiate(propPrefab, position, Quaternion.Euler(new Vector3(0f, 0f, -(float)propData.Rotation)));
+        GameObject prop = Instantiate(propPrefab, position, Quaternion.Euler(new Vector3(0f, 0f, -(float)propData.Direction)));
         prop.transform.parent = _stageObjectContainer;
+
+        if (propData.MoverInput.Enabled)
+        {
+            prop.AddComponent<BasicMover>().Initialise(propData.MoverInput);
+        }
+        if (propData.RotatorInput.Enabled)
+        {
+            prop.AddComponent<BasicRotator>().Initialise(propData.RotatorInput);
+        }
     }
     private void SpawnBackWall(int sizeX, int sizeY)
     {

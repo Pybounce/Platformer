@@ -96,8 +96,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d7b4db847eb8142ac6af8e813e9416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: {x: 0, y: 100, z: 0}
-  Speed: 1
+  Input:
+    Enabled: 0
+    Rotation: {x: 0, y: 0, z: 0}
+    StartRotation: {x: 0, y: 0, z: 0}
 --- !u!114 &1772893021881611805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,8 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80dd4db3b62ee546b346d932e07db4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Offset: {x: 0, y: -0.5, z: 0}
-  Speed: 0.3
+  Input:
+    Enabled: 0
+    Offset: {x: 0, y: -0.5, z: 0}
+    Speed: 0.2
+    StartLerp: 0
 --- !u!135 &-3696842524944932410
 SphereCollider:
   m_ObjectHideFlags: 0

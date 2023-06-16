@@ -95,8 +95,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d7b4db847eb8142ac6af8e813e9416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Rotation: {x: 0, y: 0, z: -500}
-  Speed: 1
+  Input:
+    Enabled: 0
+    Rotation: {x: 0, y: 0, z: -700}
+    StartRotation: {x: 0, y: 0, z: 0}
 --- !u!135 &6848204040838863441
 SphereCollider:
   m_ObjectHideFlags: 0
