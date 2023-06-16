@@ -8,35 +8,30 @@ public class StageBuilder : MonoBehaviour
 {
     private Transform _stageObjectContainer;
 
-    private void Awake()
-    {
-        _stageObjectContainer = new GameObject("Stage Object Container").transform;
-    }
-    public void Demolish()
-    {
-        Destroy(_stageObjectContainer.gameObject);
-        _stageObjectContainer = new GameObject("Stage Object Container").transform; //TODO -> Move this to it's own method, it's called in awake too
-    }
-
     public void Build(StageData stageData)
     {
-        Demolish();
-
-        for (int y = 0; y < stageData.Size.y; y++)
-        {
-            for (int x = 0; x < stageData.Size.x; x++)
-            {
-                int flatIndex = ArrayExtensions.FlattenIndex(x, y, stageData.Size.x);
-                PropData currentPropData = stageData.PropData[flatIndex];
-                if (currentPropData.Id == 0) continue;
-                Vector3 itemPosition = GridHelpers.GridToWorldPos(x, y, stageData.Size.x, stageData.Size.y);
-                SpawnProp(currentPropData, itemPosition);
-            }
-        }
-
+        CreateNewStageObjectContainer();
+        SpawnProps(stageData);
         SpawnBackWall(stageData.Size.x, stageData.Size.y);
     }
-
+    private void CreateNewStageObjectContainer()
+    {
+        if (_stageObjectContainer != null)
+        {
+            Destroy(_stageObjectContainer.gameObject);
+        }
+        _stageObjectContainer = new GameObject("Stage Object Container").transform;
+    }
+    private void SpawnProps(StageData stageData)
+    {
+        if (stageData.PropData == null) { return; }
+        foreach (PropData currentPropData in stageData.PropData)
+        {
+            if (currentPropData.Id == 0) continue;
+            Vector3 itemPosition = GridHelpers.GridToWorldPos(currentPropData.GridIndex, stageData.Size);
+            SpawnProp(currentPropData, itemPosition);
+        }
+    }
 
     private void SpawnProp(PropData propData, Vector3 position)
     {
@@ -44,6 +39,15 @@ public class StageBuilder : MonoBehaviour
         GameObject propPrefab = GameDb.LoadProp(propName);
         GameObject prop = Instantiate(propPrefab, position, Quaternion.Euler(new Vector3(0f, 0f, -(float)propData.Direction)));
         prop.transform.parent = _stageObjectContainer;
+
+        if (propData.MoverInput.Enabled)
+        {
+            prop.AddComponent<BasicMover>().Initialise(propData.MoverInput);
+        }
+        if (propData.RotatorInput.Enabled)
+        {
+            prop.AddComponent<BasicRotator>().Initialise(propData.RotatorInput);
+        }
     }
     private void SpawnBackWall(int sizeX, int sizeY)
     {
