@@ -20,5 +20,6 @@ public class PlayerController : MonoBehaviour
         GetComponent<PlayerCollisionController>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<ParticleSystem>().Play();
+        Camera.main.GetComponent<CameraMovement>().TriggerShake();
     }
 }
