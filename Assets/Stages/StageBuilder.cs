@@ -55,6 +55,8 @@ public class StageBuilder : MonoBehaviour
         GameObject prop = Instantiate(propPrefab, new Vector3((sizeX / 2f) - 0.5f, (sizeY / 2f) + 0.5f, 1f), Quaternion.identity);
         prop.transform.localScale = new Vector3(sizeX, sizeY, 1f);
         prop.transform.parent = _stageObjectContainer;
+        prop.GetComponent<MeshRenderer>().sharedMaterial.SetFloat("_LastHighlightTime", -100f);
+
     }
 }
 

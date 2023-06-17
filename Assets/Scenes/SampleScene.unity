@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2580483343846574066, guid: 4697ee873dee5ce47a068dd0d0d4baf9, type: 3}
+      propertyPath: BackWallMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bf3660893ae895448860916fc827525, type: 2}
     - target: {fileID: 2580483343846574071, guid: 4697ee873dee5ce47a068dd0d0d4baf9, type: 3}
       propertyPath: m_RootOrder
       value: 3

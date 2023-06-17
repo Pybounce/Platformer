@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BackWall
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: aa648c6fd0efa4b4e9c025be6f7ce04f, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
@@ -63,6 +63,11 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
+    - _Glow: 1.5
+    - _HighlightFadeDelay: 0.1
+    - _HighlightFadeTime: 0.5
+    - _HighlightTime: 0.3
+    - _LastHighlightTime: 9.737967
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -70,9 +75,12 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
+    - _TimeSinceHighlight: 0
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+    - _Color: {r: 0.2622375, g: 0.48633134, b: 0.7830189, a: 1}
+    - _Colour: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _HighlightColour: {r: 1, g: 0.3443396, b: 0.3443396, a: 1}
   m_BuildTextureStacks: []
