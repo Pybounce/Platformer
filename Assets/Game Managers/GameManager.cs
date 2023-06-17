@@ -16,7 +16,14 @@ public class GameManager : MonoBehaviour
         else { Destroy(gameObject); }
         DontDestroyOnLoad(gameObject);
     }
-
+    public void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    public void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
     public void LoadStageSelectScene()
     {
         SceneManager.LoadScene("StageSelectScene");
@@ -26,7 +33,6 @@ public class GameManager : MonoBehaviour
     public void LoadStageScene(int stageIndex)
     {
         _stageSceneData.StageIndex = stageIndex;
-        SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.LoadScene("SampleScene");
         
     }

@@ -26,7 +26,7 @@ public class StageSelectBuilder : MonoBehaviour
         {
             PlayerStageData playerStageData = gameData.StagesData[i];
             GameObject newButton = Instantiate(StageSelectButton);
-            newButton.transform.parent = CanvasObject.transform;
+            newButton.transform.SetParent(CanvasObject.transform);
             newButton.transform.localPosition = new Vector3((_buttonWidth + ButtonSpacing) * i, (_buttonHeight + ButtonSpacing) * (i / RowCount), 1f);
             newButton.transform.localScale = Vector3.one;
 
