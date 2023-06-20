@@ -38,10 +38,11 @@ public class BasicMover : MonoBehaviour
     void Update()
     {
         Vector3 direction = _nextPoint - transform.position;
-
+        float stepDistance = (direction.normalized * Time.deltaTime * _speed).magnitude;
+        float distanceToTarget = direction.magnitude;
         transform.position += direction.normalized * Time.deltaTime * _speed;
 
-        if (Vector3.Distance(transform.position, _nextPoint) < 0.1f)
+        if (stepDistance >= distanceToTarget)
         {
             Vector3 tempCurrentPoint = _currentPoint;
             _currentPoint = _nextPoint;
