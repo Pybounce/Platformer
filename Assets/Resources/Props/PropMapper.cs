@@ -13,6 +13,7 @@ public static class PropMapper
         {4, "Spike_Double"},
         {5, "Sawblade"},
         {6, "Sawblade_Block"},
+        {7, "Sawblade_02"},
 
     };
     public static string IdToName(int id) {

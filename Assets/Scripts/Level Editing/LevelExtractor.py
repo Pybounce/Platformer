@@ -138,8 +138,6 @@ for y in range(mainImage.height):
     elif (mainColourRGB == (255, 100, 0)):			#Sawblade Block
       newProp = PropData(6, gridIndex, 0)
     elif (mainColourRGB == (0, 255, 0)):			#Sawblade_02
-      newProp = PropData(6, gridIndex, 0)
-      levelData.PropData.append(newProp.toJson())
       newProp = PropData(7, gridIndex, 0)
     elif (mainColourRGB == (255, 255, 255)):		#Completion Item
       newProp = PropData(3, gridIndex, 0)
