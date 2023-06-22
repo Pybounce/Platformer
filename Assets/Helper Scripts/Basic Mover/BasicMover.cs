@@ -25,8 +25,10 @@ public class BasicMover : MonoBehaviour
         _speed = input.Speed;
         _startLerp = input.StartLerp;
         _manuallyInitialised = manualInitialisation || _manuallyInitialised;
+        _currentPoint = transform.position;
+        _nextPoint = _currentPoint + _offset;
         SetupSpeedOverTime();
-        BeginMove();
+        SetupStartLerp();
 
     }
 
@@ -58,20 +60,20 @@ public class BasicMover : MonoBehaviour
         }
     }
 
-    private void BeginMove()
+    private void SetupStartLerp()
     {
-        _currentPoint = transform.position;
-        _nextPoint = _currentPoint + _offset;
-
         Vector3 diff = _nextPoint - _currentPoint;
         transform.position = _currentPoint + (diff * _startLerp);
     }
 
     private void SetupSpeedOverTime()
     {
+        float distanceBetweenTargets = (_nextPoint - _currentPoint).magnitude;
+        float stoppingDistance = 1f;
+        float stoppingPercentage = stoppingDistance / distanceBetweenTargets;
         _speedOverTime.AddKey(0f, 0.1f);
-        _speedOverTime.AddKey(0.05f, 1f);
-        _speedOverTime.AddKey(0.95f, 1f);
+        _speedOverTime.AddKey(stoppingPercentage, 1f);
+        _speedOverTime.AddKey(1f- stoppingPercentage, 1f);
         _speedOverTime.AddKey(1f, 0.1f);
     }
 }
