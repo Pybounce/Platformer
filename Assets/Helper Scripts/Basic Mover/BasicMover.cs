@@ -6,12 +6,13 @@ public class BasicMover : MonoBehaviour
 {
     [SerializeField] private BasicMoverInput Input;
 
-
     private Vector3 _offset;
     private float _speed;
     private float _startLerp;
     private Vector3 _nextPoint;
     private Vector3 _currentPoint;
+    private AnimationCurve _speedOverTime = new AnimationCurve();
+
     /// <summary>
     /// Stops Start from overriding init input.
     ///<br>If you initialise the object right after instantiating through code, start will be called on the next frame. So this stops it from overriding the input.</br>
@@ -24,6 +25,7 @@ public class BasicMover : MonoBehaviour
         _speed = input.Speed;
         _startLerp = input.StartLerp;
         _manuallyInitialised = manualInitialisation || _manuallyInitialised;
+        SetupSpeedOverTime();
         BeginMove();
 
     }
@@ -37,10 +39,16 @@ public class BasicMover : MonoBehaviour
     }
     void Update()
     {
-        Vector3 direction = _nextPoint - transform.position;
-        float stepDistance = (direction.normalized * Time.deltaTime * _speed).magnitude;
-        float distanceToTarget = direction.magnitude;
-        transform.position += direction.normalized * Time.deltaTime * _speed;
+        
+        Vector3 direction = _nextPoint - _currentPoint;
+        float distanceToTarget = (_nextPoint - transform.position).magnitude;
+        float distanceBetweenTargets = (_nextPoint - _currentPoint).magnitude;
+
+        float currentSpeed = Mathf.Min(_speedOverTime.Evaluate(distanceToTarget / distanceBetweenTargets) *_speed, _speed);
+
+        Vector3 step = direction.normalized * Time.deltaTime * currentSpeed;
+        float stepDistance = (step).magnitude;
+        transform.position += step;
 
         if (stepDistance >= distanceToTarget)
         {
@@ -57,5 +65,13 @@ public class BasicMover : MonoBehaviour
 
         Vector3 diff = _nextPoint - _currentPoint;
         transform.position = _currentPoint + (diff * _startLerp);
+    }
+
+    private void SetupSpeedOverTime()
+    {
+        _speedOverTime.AddKey(0f, 0.1f);
+        _speedOverTime.AddKey(0.05f, 1f);
+        _speedOverTime.AddKey(0.95f, 1f);
+        _speedOverTime.AddKey(1f, 0.1f);
     }
 }
