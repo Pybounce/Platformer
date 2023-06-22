@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Input:
     Enabled: 0
-    Rotation: {x: 0, y: 0, z: -700}
+    Rotation: {x: 0, y: 0, z: -350}
     StartRotation: {x: 0, y: 0, z: 0}
 --- !u!135 &6848204040838863441
 SphereCollider:
@@ -111,4 +111,4 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.49718603
-  m_Center: {x: 0, y: 0, z: 0.000000013969839}
+  m_Center: {x: 0, y: 0, z: 0}
