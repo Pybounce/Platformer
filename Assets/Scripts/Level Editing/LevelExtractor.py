@@ -1,5 +1,6 @@
 from PIL import Image
 import json
+from os.path import exists
 
 class Vec3:
   x = 0
@@ -108,9 +109,9 @@ mainImage = Image.open(mainReadPath) # Can be many different formats.
 mainPix = mainImage.load()
 
 movementReadPath = r"C:\Users\Michael\Desktop\Platformer_3D\Stages\Aseprite\Stage_" + levelIndex + r"_m.png"
-movementImage = Image.open(movementReadPath) # Can be many different formats.
-movementPix = None
-if (movementImage):
+movement_exists = exists(movementReadPath)
+if (movement_exists):
+    movementImage = Image.open(movementReadPath) # Can be many different formats.
     movementPix = movementImage.load()
 
 
@@ -148,7 +149,7 @@ for y in range(mainImage.height):
       continue
     else:    							#Air
       continue
-    if (movementPix):
+    if (movement_exists):
       newProp.MoverInput = GetMoverInput(movementPix[x, y])
 
     newProp.Direction = AlphaToRot(mainAlpha)
