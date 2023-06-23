@@ -109,7 +109,9 @@ mainPix = mainImage.load()
 
 movementReadPath = r"C:\Users\Michael\Desktop\Platformer_3D\Stages\Aseprite\Stage_" + levelIndex + r"_m.png"
 movementImage = Image.open(movementReadPath) # Can be many different formats.
-movementPix = movementImage.load()
+movementPix = None
+if (movementImage):
+    movementPix = movementImage.load()
 
 
 
@@ -146,7 +148,8 @@ for y in range(mainImage.height):
       continue
     else:    							#Air
       continue
-    newProp.MoverInput = GetMoverInput(movementPix[x, y])
+    if (movementPix):
+      newProp.MoverInput = GetMoverInput(movementPix[x, y])
 
     newProp.Direction = AlphaToRot(mainAlpha)
     levelData.PropData.append(newProp.toJson())
