@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 3056516696409818112}
   - component: {fileID: 976747805158551754}
   - component: {fileID: 5444553376179089847}
-  m_Layer: 0
+  - component: {fileID: 2265437053142241922}
+  m_Layer: 8
   m_Name: Sawblade_02_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,5 +97,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Input:
     Enabled: 1
-    Rotation: {x: 0, y: 0, z: -200}
+    Rotation: {x: 0, y: 0, z: -350}
     StartRotation: {x: 0, y: 0, z: 0}
+--- !u!135 &2265437053142241922
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625489970660741407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.8
+  m_Center: {x: 0, y: 0, z: 0}
