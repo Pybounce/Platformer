@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     public void ResetTo(Vector3 position)
     {
+        transform.SetParent(null);
         transform.position = position;
         GetComponent<BetterPlayerMovementController>().enabled = true;
         GetComponent<BetterPlayerMovementController>().ResetMovement();
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     }
     public void Kill()
     {
+        transform.SetParent(null);
         GetComponent<BetterPlayerMovementController>().enabled = false;
         GetComponent<PlayerCollisionController>().enabled = false;
         GetComponent<MeshRenderer>().enabled = false;
