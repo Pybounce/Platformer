@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BetterPlayerMovementController : MonoBehaviour
 {
@@ -72,6 +73,11 @@ public class BetterPlayerMovementController : MonoBehaviour
         _touchingRightWall = CheckCollision(Vector3.right);
         _touchingLeftWall = CheckCollision(Vector3.left);
         CheckCollision(Vector3.up);
+
+        if (!_touchingGround && !_touchingLeftWall && !_touchingRightWall)
+        {
+            transform.SetParent(null);
+        }
 
         ApplyHorizontalTargetResistance();
 
@@ -188,8 +194,9 @@ public class BetterPlayerMovementController : MonoBehaviour
             {
                 if (hit.distance < raycastLength && shouldHaltVelocity)
                 {
-                    transform.position += (raycastLength - hit.distance) * -direction;
+                    //transform.position += (raycastLength - hit.distance) * -direction;
                     _velocity = _velocity.Mul(new Vector3(direction.y, direction.x, direction.z).Abs());
+                    transform.SetParent(hit.transform);
                 }
                 Debug.DrawRay(raycastStartPos, transform.TransformDirection(direction) * hit.distance, Color.red);
                 colliding = true;
