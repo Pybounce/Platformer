@@ -5,13 +5,13 @@ public class PlayerController : MonoBehaviour
 {
     public void ResetTo(Vector3 position)
     {
-        transform.SetParent(null);
         transform.position = position;
         GetComponent<BetterPlayerMovementController>().enabled = true;
         GetComponent<BetterPlayerMovementController>().ResetMovement();
         GetComponent<PlayerCollisionController>().enabled = true;
         GetComponent<MeshRenderer>().enabled = true;
         GetComponent<TrailRenderer>().Clear();
+        transform.SetParent(null);
     }
     public void Kill()
     {
