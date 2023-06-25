@@ -106,16 +106,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   MaxHorizontalSpeed: 250
-  TargetHorizontalSpeed: 15
-  HorizontalAccelerationGround: 200
-  HorizontalAccelerationAir: 100
+  TargetHorizontalSpeed: 14
+  HorizontalAccelerationGround: 190
+  HorizontalAccelerationAir: 95
   HoriontalFrictionGround: 100
   HoriontalFrictionAir: 5
-  MaxVerticalSpeed: {x: -20, y: 15}
+  MaxVerticalSpeed: {x: -18, y: 14}
   Gravity: -80
   GravityAcceleration: 60
   JumpForce: 12
-  WallJumpForce: {x: 20, y: 12}
+  WallJumpForce: {x: 18, y: 11}
   WallStickTime: 0.5
   WallGravityDampener: 0.3
 --- !u!96 &2580483343846574064

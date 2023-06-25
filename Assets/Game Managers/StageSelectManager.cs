@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
+
 using UnityEngine;
-using UnityEngine.SceneManagement;
 /// <summary>
 /// StageSelectManager will be DDOL, and carry over the info of the selected stage to the StageScene. It will then be picked up from the StageController, and destroyed.
 /// </summary>
