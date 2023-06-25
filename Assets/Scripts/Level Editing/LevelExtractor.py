@@ -1,6 +1,18 @@
 from PIL import Image
 import json
 from os.path import exists
+import sys
+
+
+def show_exception_and_exit(exc_type, exc_value, tb):
+    import traceback
+    traceback.print_exception(exc_type, exc_value, tb)
+    input("Press key to exit.")
+    sys.exit(-1)
+
+sys.excepthook = show_exception_and_exit
+
+
 
 class Vec3:
   x = 0
@@ -97,7 +109,7 @@ def GetMoverInput(colour):
     if (colour == (0, 0, 0, 0)):
         return moverInput
     moverInput.Enabled = True
-    moverInput.Offset = Vec3(colour[0] / 10.0, colour[1] / 10.0, 0)
+    moverInput.Offset = Vec3(colour[0] / 2.0, colour[1] / 2.0, 0)
     if (colour[2] < 100):
       moverInput.Speed = colour[2] / 10.0
     else:
@@ -169,7 +181,6 @@ while (True):
 
 with open(writePath, "w") as outfile:
   json.dump(levelData.toJson(), outfile)
-
 
 
 
