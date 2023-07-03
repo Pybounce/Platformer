@@ -1,4 +1,4 @@
-Shader "Custom/HighlightShader"
+Shader "Custom/Checkered"
 {
     Properties
     {
@@ -21,7 +21,7 @@ Shader "Custom/HighlightShader"
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
         struct Input {
-            float4 pos;    
+            float3 worldPos;    
         };
         fixed4 _Colour;
         half _Glow;
@@ -39,10 +39,17 @@ Shader "Custom/HighlightShader"
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
-            float lerpVal = max(0, min(1, (_Time.y - _LastHighlightTime - _HighlightFadeDelay) / _HighlightFadeTime));
-            float4 lerpedColour = lerp(_HighlightColour, _Colour, lerpVal);
-            o.Albedo = lerpedColour.rgb * _Glow;
-            o.Alpha = lerpedColour.a;
+            int x = (int)(IN.worldPos.x + 2000.5);
+            int y = (int)(IN.worldPos.y + 2000.5);
+            if ((x + y) % 2 == 0)
+            {
+                o.Albedo = _Colour;
+            }
+            else
+            {
+                o.Albedo = _HighlightColour;
+            }
+
         }
         ENDCG
     }
