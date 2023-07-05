@@ -118,8 +118,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5444553376179089847, guid: 44bf3df801e0e6b4e8b062d3c50072d9, type: 3}
+      propertyPath: Input.Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444553376179089847, guid: 44bf3df801e0e6b4e8b062d3c50072d9, type: 3}
       propertyPath: Input.Rotation.z
-      value: -350
+      value: 350
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44bf3df801e0e6b4e8b062d3c50072d9, type: 3}

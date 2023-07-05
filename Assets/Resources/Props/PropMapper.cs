@@ -9,7 +9,7 @@ public static class PropMapper
         {0, ""},
         {1, "Ground"},
         {2, "Spike"},
-        {3, "Diamond"},
+        {3, "CompletionItem"},
         {4, "Spike_Double"},
         {5, "Sawblade"},
         {6, "Sawblade_Block"},

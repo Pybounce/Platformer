@@ -40,6 +40,16 @@ public class StageManager : MonoBehaviour
 
         StartNextStage();
     }
+    public void FreezeStage()
+    {
+        BasicMover[] basicMovers = GameObject.FindObjectsOfType<BasicMover>();
+        BasicRotator[] basicRotators = GameObject.FindObjectsOfType<BasicRotator>();
+
+        foreach (BasicMover basicMover in basicMovers)
+        {
+            basicMover.enabled = false;
+        }
+    }
     private void StartNextStage()
     {
         IncrementStage();
@@ -63,6 +73,7 @@ public class StageManager : MonoBehaviour
     {
         _playerController.ResetTo(GridHelpers.GridToWorldPos(_currentStageData.PlayerStartIndex, _currentStageData.Size));
     }
+
     private void LoadNewStage(int stageId)
     {
         try
