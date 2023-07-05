@@ -269,7 +269,7 @@ MonoBehaviour:
   ObstacleLayerMask:
     serializedVersion: 2
     m_Bits: 256
-  CompletionGemLayerMask:
+  CompletionItemLayerMask:
     serializedVersion: 2
     m_Bits: 512
 --- !u!114 &2580483343846574066

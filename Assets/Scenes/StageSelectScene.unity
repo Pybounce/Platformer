@@ -689,10 +689,10 @@ MonoBehaviour:
   StageSelectButton: {fileID: 5984101652581609200, guid: c721497ea1d9b1046ae0352931dabaa6, type: 3}
   ButtonSpacing: 10
   RowCount: 5
-  StageCompleteGem: {fileID: 7829223105759786403, guid: cbdc7d520e87f6842b1a96d58822ba37, type: 3}
-  DevTimeBeatGem: {fileID: 3779919633328954135, guid: 39310cd773f90ea4bb6fd6266fb2c988, type: 3}
-  MirrorModeCompleteGem: {fileID: 8029316699593162440, guid: baa409ce086d7bb45af2247837847329, type: 3}
-  BlankGem: {fileID: 7909527522087100029, guid: 5f4c2f0ca047af9408e7fd9958ed1226, type: 3}
+  StageCompletionItem: {fileID: 2065517127}
+  DevTimeCompletionItem: {fileID: 2065517127}
+  MirrorModeCompletionItem: {fileID: 2065517127}
+  BlankCompletionItem: {fileID: 2065517127}
 --- !u!4 &1982589772
 Transform:
   m_ObjectHideFlags: 0
@@ -707,6 +707,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2065517127 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7212497072121093486, guid: b61d9a2a358adb04bb6c9a783154b7a4, type: 3}
+  m_PrefabInstance: {fileID: 4376067408766055073}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4376067408766055073
 PrefabInstance:
   m_ObjectHideFlags: 0
