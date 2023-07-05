@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerCollisionController : MonoBehaviour
 {
     [SerializeField] private LayerMask ObstacleLayerMask;
-    [SerializeField] private LayerMask CompletionGemLayerMask;
+    [SerializeField] private LayerMask CompletionItemLayerMask;
     private bool _hasCollidedThisFrame = false;
 
     private void Update()
@@ -25,7 +25,7 @@ public class PlayerCollisionController : MonoBehaviour
             await Wait();
             StageManager.Instance.RestartStage();
         }
-        else if (1 << collision.gameObject.layer == CompletionGemLayerMask)
+        else if (1 << collision.gameObject.layer == CompletionItemLayerMask)
         {
             _hasCollidedThisFrame = true;
             GetComponent<PlayerController>().Disable();

@@ -13,10 +13,10 @@ public class StageSelectBuilder : MonoBehaviour
     private float _buttonWidth;
     private float _buttonHeight;
 
-    [SerializeField] private GameObject StageCompleteGem;
-    [SerializeField] private GameObject DevTimeBeatGem;
-    [SerializeField] private GameObject MirrorModeCompleteGem;
-    [SerializeField] private GameObject BlankGem;
+    [SerializeField] private GameObject StageCompletionItem;
+    [SerializeField] private GameObject DevTimeCompletionItem;
+    [SerializeField] private GameObject MirrorModeCompletionItem;
+    [SerializeField] private GameObject BlankCompletionItem;
     private void Start()
     {
         _buttonWidth = StageSelectButton.GetComponent<RectTransform>().rect.width;
@@ -37,25 +37,25 @@ public class StageSelectBuilder : MonoBehaviour
             entry.callback.AddListener((eventData) => { FindObjectOfType<StageSelectManager>().LoadStage(playerStageData.StageId); });
             trigger.triggers.Add(entry);
 
-            AddGem(StageCompleteGem, 0, newButton.transform, playerStageData.StageComplete);
-            AddGem(DevTimeBeatGem, 1, newButton.transform, playerStageData.DevTimeComplete);
-            AddGem(MirrorModeCompleteGem, 2, newButton.transform, playerStageData.MirrorModeComplete);
+            AddCompletionItem(StageCompletionItem, 0, newButton.transform, playerStageData.StageComplete);
+            AddCompletionItem(DevTimeCompletionItem, 1, newButton.transform, playerStageData.DevTimeComplete);
+            AddCompletionItem(MirrorModeCompletionItem, 2, newButton.transform, playerStageData.MirrorModeComplete);
         }
     }
-    private void AddGem(GameObject gem, int position, Transform parent, bool condition)
+    private void AddCompletionItem(GameObject completionItem, int position, Transform parent, bool condition)
     {
-        GameObject newGem;
+        GameObject newCompletionItem;
         if (condition)
         {
-            newGem = Instantiate(gem);
+            newCompletionItem = Instantiate(completionItem);
         }
         else
         {
-            newGem = Instantiate(BlankGem);
+            newCompletionItem = Instantiate(BlankCompletionItem);
         }
-        newGem.transform.parent = parent;
+        newCompletionItem.transform.parent = parent;
         Vector3 positionOffset = new Vector3(-_buttonWidth / 3f, -_buttonHeight / 3f, 0f);
-        newGem.transform.localPosition = new Vector3(position * (_buttonWidth / 3f), 0f, 0f) + positionOffset;
+        newCompletionItem.transform.localPosition = new Vector3(position * (_buttonWidth / 3f), 0f, 0f) + positionOffset;
 
     }
 
