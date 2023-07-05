@@ -63,7 +63,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Glow: 1.5
+    - _Glow: 1.075
     - _HighlightFadeDelay: 0.1
     - _HighlightFadeTime: 0.5
     - _HighlightTime: 0.3
@@ -80,7 +80,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0.2622375, g: 0.48633134, b: 0.7830189, a: 1}
-    - _Colour: {r: 0.29636884, g: 0.5165068, b: 0.5660378, a: 1}
+    - _Colour: {r: 0.3294118, g: 0.6451739, b: 0.7058824, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _HighlightColour: {r: 0.23251157, g: 0.46806267, b: 0.5188679, a: 1}
+    - _HighlightColour: {r: 0.22745095, g: 0.50241566, b: 0.5294118, a: 1}
   m_BuildTextureStacks: []

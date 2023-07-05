@@ -37,17 +37,23 @@ Shader "Custom/Checkered"
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
 
+        float CalculateGlow(float3 worldPos)
+        {
+            float glowMul = 2;
+            return _Glow * (1 + (cos((worldPos.x + worldPos.y + _Time.y) * 0.2) / 2)) * glowMul;
+        }
+
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             int x = (int)(IN.worldPos.x + 2000.5);
             int y = (int)(IN.worldPos.y + 2000.5);
             if ((x + y) % 2 == 0)
             {
-                o.Albedo = _Colour;
+                o.Albedo = _Colour * CalculateGlow(IN.worldPos);
             }
             else
             {
-                o.Albedo = _HighlightColour;
+                o.Albedo = _HighlightColour * CalculateGlow(IN.worldPos);
             }
 
         }
